@@ -1,0 +1,49 @@
+{% comment %} {% extends 'dashboard/sidebar.html' %}
+
+{% block content %}
+
+  <!-- Begin Page Content -->
+   <div class="container-fluid">
+       <div>
+           <h1 align="center">Products Form</h1>
+        </div>
+        <form class="row g-3" method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group col-12">
+                <label class="form-label">Product_Name</label>
+                <input type="text" class="form-control" placeholder="product_name" name="product_name" required>
+                
+            </div>
+            <div class="form-group col-12">
+                <label class="form-label">Product_Price</label>
+                <input type="text" class="form-control" placeholder="product_price" name="product_price" required>
+                   
+            </div>
+            <div class="form-group col-12">
+                <label class="form-label">Quantity</label>
+                <input type="text" class="form-control" placeholder="quantity" name="quantity" required>
+                
+            </div>
+            <div class="form-group col-12">
+                <label for="inputAddress" class="form-label">Image_upload</label>
+                <input type="file" class="form-control" id="inputAddress" name="image" required>
+                
+            </div>
+            <div class="form-group col-12">
+                <label for="inputDescription" class="form-label">Description</label>
+                <input type="text" class="form-control" id="inputDescription" placeholder="Write your description" name="description" required>
+                
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        {% if messages %}
+        {% for msg in messages %}
+        <b>{{msg}}</b>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <!-- /.container-fluid -->
+
+{% endblock %} {% endcomment %}

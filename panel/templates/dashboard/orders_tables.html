@@ -1,0 +1,50 @@
+{% extends 'dashboard/sidebar.html' %}
+
+{% block content %}
+
+<!-- Begin Page Content -->
+<ul>
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    </div>
+    <a href="{% url 'ordersform' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Add</a>
+    <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Product_Name</th>
+                    <th scope="col">Product_Price</th>
+                    <th scope="col">Customer_Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Created_at</th>
+                    <th scope="col">Updated_at</th>
+                    <th scope="col">Actions</th>
+            </tr>
+        </thead>
+            <tbody>
+                {% for item in objs %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.product_name }}</td>
+                    <td>{{ item.product_price }}</td>
+                    <td>{{ item.customer }}</td>
+                    <td>{{ item.address }}</td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.created_at }}</td>
+                    <td>{{ item.updated_at }}</td>
+                    <td>
+                        <a href="/orders_edit/{{item.id}}" class="btn btn-primary">Edit</a>
+                        <a href="/orders_delete/{{item.id}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</ul>
+
+{% endblock %}
+         
